@@ -1,4 +1,4 @@
-package com.myprojects.player;
+package com.player;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +9,7 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import java.time.Duration;
 
-import static com.myprojects.player.player.current;
+import static com.player.current;
 import java.awt.*;
 import java.awt.TrayIcon.MessageType;
 
@@ -47,21 +47,12 @@ class name extends Thread {
 class TrayIcondemo {
 
     public void displayTray() throws AWTException {
-        //Obtain only one instance of the SystemTray object
         SystemTray tray = SystemTray.getSystemTray();
-
-        //If the icon is a file
         Image image = Toolkit.getDefaultToolkit().createImage("icon.png");
-        //Alternative (if the icon is on the classpath):
-        //Image image = Toolkit.getDefaultToolkit().createImage(getClass().getResource("icon.png"));
-
         TrayIcon trayIcon = new TrayIcon(image, "Tray Demo");
-        //Let the system resize the image if needed
         trayIcon.setImageAutoSize(true);
-        //Set tooltip text for the tray icon
         trayIcon.setToolTip("System tray icon demo");
         tray.add(trayIcon);
-
         trayIcon.displayMessage(current,"now playing", MessageType.INFO);
     }
 }
@@ -80,8 +71,7 @@ public class player {
         chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("--window-size=1920,1200");
         chromeOptions.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors","--disable-extensions","--no-sandbox","--disable-dev-shm-usage");
-       // webDriver = new ChromeDriver(chromeOptions);
-
+    
         String url="https://jiosaavn.com/search/song/";
         System.out.println("enter song name:");
         String we=sc.nextLine();
